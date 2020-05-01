@@ -49,6 +49,7 @@ namespace program.Pages
                             SELECT date as DATE, hospitalized, death
                             FROM us_states_covid19_daily
                             WHERE state LIKE '%{0}%'
+                            ORDER BY date ASC
                             ", input);
             
                 DataSet ds = DataAccessTier.DB.ExecuteNonScalarQuery(sql);
