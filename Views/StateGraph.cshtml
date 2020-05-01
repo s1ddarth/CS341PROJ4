@@ -1,7 +1,8 @@
 @page
-@model StateInfoModel
+@model StateGraphModel
 @{  
-  var Populations = Newtonsoft.Json.JsonConvert.SerializeObject(Model.StateList);
+  var Populations = Newtonsoft.Json.JsonConvert.SerializeObject(Model.populationList);
+  var dates = Newtonsoft.Json.JsonConvert.SerializeObject(Model.dateList);
 
   ViewData["Title"] = "Census Data Graphed";    //Changed Title
 }  
@@ -10,7 +11,7 @@
 <br />
 Your search string: "@Model.Input"
 <br />
-# of states found: @Model.StateList.Count
+# of states found: @Model.StateList1.Count
 <br />  
 
 @{
@@ -40,10 +41,11 @@ var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
+        labels: @Html.Raw(dates),
         datasets: [
         {
-            label: "Population",  //Changed this  
-            data: @Html.Raw(Populations), //Changed this to Populations
+            label: "Population",  
+            data: @Html.Raw(Populations),
             borderColor: "red ",
             pointBackgroundColor: "black",
 
@@ -57,13 +59,8 @@ var myChart = new Chart(ctx, {
                     beginAtZero:true
                 }
             }]
-        },
-        plugins: {
-          datalabels: {
-    
           }
         }
-    }
-});
-
+      }
+);
 </script>
