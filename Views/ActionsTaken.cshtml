@@ -1,0 +1,52 @@
+@page
+@model ActionsTaken
+@{
+  ViewData["Title"] = "World News";
+}
+
+<h2>World News</h2>  
+
+<br />
+@{
+   if (@Model.EX != null)
+	 {
+		 <h3>**ERROR: @Model.EX.Message</h3>
+		 <br />
+		 <hr />
+		 <br />
+		 <br />
+	 }
+}
+
+<table class="table">  
+    <thead>  
+        <tr>   
+            <th>  
+                State
+            </th>  
+						<th>  
+                Date
+            </th>  
+            <th>  
+                News
+            </th>  
+        </tr>  
+    </thead>  
+    <tbody>  
+        @foreach (var item in Model.NewsList)  
+        {  
+            <tr>  
+                <td>  
+										@item.StateName
+                </td>  
+                <td>  
+                    @item.Date
+                </td> 
+								<td>  
+                    @item.News
+                </td> 
+            </tr>  
+        }  
+    </tbody>  
+</table> 
+

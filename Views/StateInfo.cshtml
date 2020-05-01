@@ -1,0 +1,57 @@
+@page
+@model StateInfoModel
+@{
+  ViewData["Title"] = "State Information";
+}
+
+<h2>State Information</h2>  
+
+<br />
+Your search string: "@Model.Input"
+<br />
+# of states found: @Model.StateList.Count
+<br />
+<br />
+@{
+   if (@Model.EX != null)
+	 {
+		 <h3>**ERROR: @Model.EX.Message</h3>
+		 <br />
+		 <hr />
+		 <br />
+		 <br />
+	 }
+}
+
+<table class="table">  
+    <thead>  
+        <tr>   
+            <th>  
+                State
+            </th>  
+						<th>  
+                Year
+            </th>  
+            <th>  
+                Population
+            </th>  
+        </tr>  
+    </thead>  
+    <tbody>  
+        @foreach (var item in Model.StateList)  
+        {  
+            <tr>  
+                <td>  
+										@item.StateName
+                </td>  
+                <td>  
+                    @item.Year
+                </td> 
+								<td>  
+                    @item.Population
+                </td> 
+            </tr>  
+        }  
+    </tbody>  
+</table> 
+

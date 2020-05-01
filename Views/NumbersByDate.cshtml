@@ -1,0 +1,103 @@
+@page
+@model NumbersByDateModel
+@{  
+  var Labels = Newtonsoft.Json.JsonConvert.SerializeObject(Model.dates);
+  var Totals = Newtonsoft.Json.JsonConvert.SerializeObject(Model.positive);
+  var Totals1 = Newtonsoft.Json.JsonConvert.SerializeObject(Model.negative);
+  var Totals2 = Newtonsoft.Json.JsonConvert.SerializeObject(Model.deaths);
+  var Annotations = Newtonsoft.Json.JsonConvert.SerializeObject(Model.annotations);
+
+  ViewData["Title"] = "Infection Totals";
+}  
+
+<h2>Infection Totals</h2>  
+
+<br />
+Raw data: @Html.Raw(Totals)
+<br />
+Raw data: @Html.Raw(Totals1)
+<br />
+Raw data: @Html.Raw(Totals2)
+<br />
+Raw data: @Html.Raw(Annotations)
+<br />
+<br />
+
+@{
+   if (@Model.EX != null)
+	 {
+	   <br />
+		 <br />
+		 <h3>**ERROR: @Model.EX.Message</h3>
+		 <br />
+		 <hr />
+		 <br />
+		 <br />
+	 }
+}
+
+<div class="box-body">  
+  <div class="chart-container">  
+     <canvas id="myChart"></canvas>  
+  </div>  
+</div>  
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+
+<script>
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: @Html.Raw(Labels),
+        datasets: [
+        {
+            label: "Positive Cases",  
+            data: @Html.Raw(Totals),
+            borderColor: "blue",
+            pointBackgroundColor: "black",
+
+            borderWidth: 1
+        },
+        {
+            label: "Negative Cases",  
+            data: @Html.Raw(Totals1),
+            borderColor: "blue",
+            pointBackgroundColor: "black",
+
+            borderWidth: 1
+        }
+        ]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        },
+        plugins: {
+          datalabels: {
+            formatter: function(value, context) {
+              var anno = @Html.Raw(Annotations)
+              @foreach (var item in Model.annotations)  
+              {  
+              <text>
+                if("@item.Item1" == context.chart.data.labels[context.dataIndex])
+                {
+                  return "@item.Item2";
+                }
+                </text>
+              }  
+              return "";
+            },
+            align: 270,
+            offset: 4
+          }
+        }
+    }
+});
+
+</script>
