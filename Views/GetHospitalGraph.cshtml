@@ -1,0 +1,27 @@
+@page
+@model HospitalGraphModel
+@{
+  ViewData["Title"] = "Get State Hospital Input";
+}
+
+<div class="container">  
+    <h2>Which State(s) are you interested in?</h2>  
+    <h3>Task 2</h3>  
+    <hr />  
+    <br />  
+		<form action="HospitalGraph" method="get">
+				
+        <div class="row">  
+            <div class="col-md-4">  
+                <label asp-for="Input">Enter State name (full or partial):</label>  
+                <input asp-for="Input" class="form-control" />  
+            </div>  
+        </div>   
+				
+        <br />  
+        <input type="submit" value="Lookup" class="btn btn-primary" />  
+        <a class="btn btn-default" href="/">Cancel</a>  
+				
+    </form>
+</div>
+

@@ -111,3 +111,5 @@
 /home/codio/workspace/covid-web/obj/Debug/netcoreapp3.1/Razor/Views/ActionsTaken.cshtml.g.cs
 /home/codio/workspace/covid-web/obj/Debug/netcoreapp3.1/Razor/Views/GetStateInputGraph.cshtml.g.cs
 /home/codio/workspace/covid-web/obj/Debug/netcoreapp3.1/Razor/Views/StateGraph.cshtml.g.cs
+/home/codio/workspace/covid-web/obj/Debug/netcoreapp3.1/Razor/Views/GetHospitalGraph.cshtml.g.cs
+/home/codio/workspace/covid-web/obj/Debug/netcoreapp3.1/Razor/Views/HospitalGraph.cshtml.g.cs
