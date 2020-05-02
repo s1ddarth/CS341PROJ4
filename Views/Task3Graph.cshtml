@@ -1,0 +1,111 @@
+@page
+@model Task3GraphModel
+@{  
+    var Labels = Newtonsoft.Json.JsonConvert.SerializeObject(Model.dates);
+
+    var state1PosList = Newtonsoft.Json.JsonConvert.SerializeObject(Model.s1P);
+    var state1NegList = Newtonsoft.Json.JsonConvert.SerializeObject(Model.s1N);
+    var state2PosList = Newtonsoft.Json.JsonConvert.SerializeObject(Model.s2P);
+    var state2NegList = Newtonsoft.Json.JsonConvert.SerializeObject(Model.s2N);
+    var state3PosList = Newtonsoft.Json.JsonConvert.SerializeObject(Model.s3P);
+    var state3NegList = Newtonsoft.Json.JsonConvert.SerializeObject(Model.s3N);
+
+    ViewData["Title"] = "3 State Comparision";
+}  
+
+<br /><br /><br /><br /><br /><br />
+
+<h2>Infection Totals</h2>  
+<h3>Task 3</h3>
+
+@{
+   if (@Model.EX != null)
+	 {
+	   <br />
+		 <br />
+		 <h3>**ERROR: @Model.EX.Message</h3>
+		 <br />
+		 <hr />
+		 <br />
+		 <br />
+	 }
+}
+
+<div class="box-body">  
+  <div class="chart-container">  
+     <canvas id="myChart"></canvas>  
+  </div>  
+</div>  
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+
+<script>
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: @Html.Raw(Labels),
+        datasets: [
+        {
+            label: "State1 Positive",  
+            data: @Html.Raw(state1PosList),    
+            borderColor: "blue",
+            pointBackgroundColor: "black",
+
+            borderWidth: 1
+        },
+        {
+            label: "State1 Negative",
+            data: @Html.Raw(state1NegList), //TODO
+            borderColor: "red", 
+            pointBackgroundColor: "black",
+
+            borderWidth: 1
+        },
+        {
+            label: "State2 Positive", 
+            data: @Html.Raw(state2PosList), //TODO
+            borderColor: "yellow", 
+            pointBackgroundColor: "black",
+
+            borderWidth: 1
+        },
+        {
+            label: "State2 Negative", 
+            data: @Html.Raw(state2NegList), //TODO
+            borderColor: "purple", 
+            pointBackgroundColor: "black",
+
+            borderWidth: 1
+        },
+        {
+            label: "State3 Positive", 
+            data: @Html.Raw(state3PosList), //TODO
+            borderColor: "orange", 
+            pointBackgroundColor: "black",
+
+            borderWidth: 1
+        },
+        {
+            label: "State3 Negative",  
+            data: @Html.Raw(state3NegList), //TODO
+            borderColor: "green", 
+            pointBackgroundColor: "black",
+
+            borderWidth: 1
+        }
+        ]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+
+</script>

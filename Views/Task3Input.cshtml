@@ -1,0 +1,46 @@
+@page
+@model Task3InputModel
+@{
+  ViewData["Title"] = "Get State Input";
+}
+
+<div class="container">  
+    <br/> <br/> <br/> <br/> <br/> <br/>
+    <h2>Which State(s) are you interested in?</h2>  
+    <h3>Task 3</h3>  
+    <hr />  
+    <br />  
+		<form action="Task3Graph" method="get">
+				
+        <div class="row">  
+            <div class="col-md-4">  
+                <label asp-for="Input1">Enter State 1 name (full or partial):</label>  
+                <input asp-for="Input1" class="form-control" />  
+            </div>  
+        </div>   
+				
+        <br />  
+				
+        <div class="row">  
+            <div class="col-md-4">  
+                <label asp-for="Input2">Enter State 2 name (full or partial):</label>  
+                <input asp-for="Input2" class="form-control" />  
+            </div>  
+        </div>   
+				
+        <br />  
+				
+        <div class="row">  
+            <div class="col-md-4">  
+                <label asp-for="Input3">Enter State 3 name (full or partial):</label>  
+                <input asp-for="Input3" class="form-control" />  
+            </div>  
+        </div>   
+				
+        <br />  
+        <input type="submit" value="Lookup" class="btn btn-primary" />  
+        <a class="btn btn-default" href="/">Cancel</a> 
+				
+    </form>
+</div>
+
