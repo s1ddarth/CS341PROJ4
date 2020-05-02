@@ -115,3 +115,5 @@
 /home/codio/workspace/covid-web/obj/Debug/netcoreapp3.1/Razor/Views/HospitalGraph.cshtml.g.cs
 /home/codio/workspace/covid-web/obj/Debug/netcoreapp3.1/Razor/Views/Task3Input.cshtml.g.cs
 /home/codio/workspace/covid-web/obj/Debug/netcoreapp3.1/Razor/Views/Task3Graph.cshtml.g.cs
+/home/codio/workspace/covid-web/obj/Debug/netcoreapp3.1/Razor/Views/Task4Graph.cshtml.g.cs
+/home/codio/workspace/covid-web/obj/Debug/netcoreapp3.1/Razor/Views/Task4Input.cshtml.g.cs
